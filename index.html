@@ -1,0 +1,1023 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kobus Nelson – Ward 2 Profile</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+<style>
+    :root {
+        --primary: #000000;      /* UIM black */
+        --accent: #F9B233;       /* UIM gold */
+        --blue: #0057A8;         /* UIM blue */
+        --green: #009639;        /* UIM green */
+        --red: #DA1A32;          /* UIM red */
+        --light: #f7f7f7;
+        --dark: #111;
+        --header-offset: 72px;
+    }
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    html, body {
+        overflow-x: hidden;
+        max-width: 100%;
+        scroll-padding-top: var(--header-offset);
+    }
+
+    body {
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        background:
+            radial-gradient(circle at top left, rgba(249,178,51,0.16), transparent 25%),
+            radial-gradient(circle at bottom right, rgba(0,87,168,0.1), transparent 24%),
+            linear-gradient(180deg, #f7f6f3 0%, #ece9e3 100%);
+        color: #222;
+        line-height: 1.7;
+        overflow-x: hidden;
+        padding-top: 64px;
+        padding-bottom: 64px;
+    }
+
+    /* Fade-in animation */
+    .fade-in {
+        opacity: 0;
+        transform: translateY(20px);
+        animation: fadeInUp 0.8s ease forwards;
+    }
+
+    @keyframes fadeInUp {
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    /* Scroll reveal */
+    .scroll-reveal {
+        opacity: 0;
+        transform: translateY(26px);
+        filter: blur(2px);
+        transition: opacity 0.7s ease, transform 0.7s ease, filter 0.7s ease;
+    }
+
+    .scroll-reveal.visible {
+        opacity: 1;
+        transform: translateY(0);
+        filter: blur(0);
+    }
+
+    /* Navigation */
+    header {
+        background: rgba(0, 0, 0, 0.94);
+        color: #fff;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 100;
+        box-shadow: 0 8px 30px rgba(0,0,0,0.18);
+        backdrop-filter: blur(6px);
+    }
+
+    .nav-bar {
+        max-width: 1000px;
+        margin: auto;
+        padding: 12px 16px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .brand {
+        font-size: 16px;
+        font-weight: 800;
+        display: inline-block;
+        color: #fff;
+        text-decoration: none;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+    }
+
+    .brand span {
+        color: var(--accent);
+    }
+
+    nav ul {
+        list-style: none;
+        display: flex;
+        gap: 12px;
+    }
+
+    nav a {
+        color: #fff;
+        text-decoration: none;
+        padding: 8px 12px;
+        border-radius: 999px;
+        transition: 0.25s ease;
+        font-size: 14px;
+        position: relative;
+    }
+
+    nav a:hover {
+        background: rgba(249,178,51,0.14);
+        color: #fff;
+        transform: translateY(-1px);
+    }
+
+    nav a::after {
+        content: "";
+        position: absolute;
+        left: 12px;
+        right: 12px;
+        bottom: 5px;
+        height: 2px;
+        background: var(--accent);
+        transform: scaleX(0);
+        transition: transform 0.25s ease;
+    }
+
+    nav a:hover::after {
+        transform: scaleX(1);
+    }
+
+    /* Hero */
+    .hero {
+        background:
+            linear-gradient(135deg, rgba(0,0,0,0.97), rgba(26,26,26,0.9)),
+            linear-gradient(135deg, #000, #111);
+        color: #fff;
+        padding: 48px 16px 42px;
+        margin-top: 0;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .hero::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background:
+            radial-gradient(circle at 18% 28%, rgba(249,178,51,0.23), transparent 22%),
+            radial-gradient(circle at 82% 16%, rgba(0,87,168,0.18), transparent 28%);
+        pointer-events: none;
+    }
+
+    .hero-inner {
+        max-width: 1000px;
+        margin: auto;
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 20px;
+        position: relative;
+        z-index: 1;
+    }
+
+    @media (min-width: 768px) {
+        .hero-inner {
+            grid-template-columns: 1.4fr 1fr;
+        }
+    }
+
+    .hero-photo img {
+        width: 190px;
+        height: 190px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 4px solid var(--accent);
+        box-shadow: 0 20px 48px rgba(0,0,0,0.45);
+        transition: transform 0.35s ease, box-shadow 0.35s ease;
+    }
+
+    .hero-photo img:hover {
+        transform: translateY(-6px) scale(1.02);
+        box-shadow: 0 28px 58px rgba(249,178,51,0.18);
+    }
+
+    .hero-badge {
+        margin-top: 18px;
+        display: inline-block;
+        padding: 6px 12px;
+        background: rgba(249,178,51,0.12);
+        border: 1px solid rgba(249,178,51,0.4);
+        border-radius: 999px;
+        font-size: 12px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--accent);
+        animation: pulseBadge 2.8s ease-in-out infinite;
+    }
+
+    @keyframes pulseBadge {
+        0%, 100% { box-shadow: 0 0 0 rgba(249,178,51,0.15); }
+        50% { box-shadow: 0 0 22px rgba(249,178,51,0.28); }
+    }
+
+    /* Layout */
+    .container {
+        max-width: 1000px;
+        margin: auto;
+        padding: 0 16px 40px;
+    }
+
+    section {
+        padding-top: 42px;
+        scroll-margin-top: var(--header-offset);
+    }
+
+    section h2 {
+        font-size: clamp(1.6rem, 3vw, 2.3rem);
+        margin-bottom: 16px;
+        border-left: 4px solid var(--accent);
+        padding-left: 10px;
+        letter-spacing: -0.03em;
+    }
+
+    ul {
+        margin-left: 18px;
+        margin-bottom: 10px;
+    }
+
+    ul li {
+        margin-bottom: 6px;
+    }
+
+    /* Cards */
+    .card-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 18px;
+    }
+
+    @media (min-width: 768px) {
+        .card-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    .card {
+        background: linear-gradient(180deg, rgba(255,255,255,0.97), rgba(255,255,255,0.9));
+        padding: 18px 18px 16px;
+        border-radius: 16px;
+        box-shadow: 0 8px 22px rgba(15,15,15,0.08);
+        border: 1px solid rgba(17,17,17,0.04);
+        position: relative;
+        overflow: hidden;
+        transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    }
+
+    .card::before {
+        content: "";
+        position: absolute;
+        inset: 0 auto auto 0;
+        width: 100%;
+        height: 4px;
+        background: linear-gradient(90deg, var(--accent), rgba(249,178,51,0.15));
+    }
+
+    .card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 18px 32px rgba(0,0,0,0.12);
+        border-color: rgba(249,178,51,0.4);
+    }
+
+    .card h3 {
+        color: #111;
+        margin-bottom: 8px;
+        letter-spacing: -0.02em;
+    }
+
+    .contact-icon {
+        display: inline-flex;
+        width: 1.4em;
+        margin-right: 0.25em;
+        color: var(--accent);
+        font-size: 1.05em;
+        line-height: 1;
+        align-items: center;
+        justify-content: center;
+    }
+
+    /* Gallery */
+    .gallery {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+    }
+
+    .gallery img {
+        width: 100%;
+        height: 140px;
+        object-fit: cover;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        cursor: zoom-in;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .gallery img:hover {
+        transform: translateY(-4px) scale(1.02);
+        box-shadow: 0 12px 24px rgba(0,0,0,0.16);
+    }
+
+    .gallery-lightbox {
+        position: fixed;
+        inset: 0;
+        z-index: 300;
+        display: grid;
+        place-items: center;
+        padding: 24px;
+        background: rgba(0,0,0,0.86);
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        transition: opacity 0.25s ease, visibility 0.25s ease;
+    }
+
+    .gallery-lightbox.visible {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+    }
+
+    .gallery-lightbox-viewport {
+        width: min(92vw, 1000px);
+        overflow: hidden;
+        touch-action: pan-y;
+    }
+
+    .gallery-lightbox-track {
+        display: flex;
+        transform: translateX(0);
+        transition: transform 0.3s ease;
+        will-change: transform;
+    }
+
+    .gallery-lightbox-slide {
+        min-width: 100%;
+        max-height: 86vh;
+        display: grid;
+        place-items: center;
+    }
+
+    .gallery-lightbox-slide img {
+        max-width: 100%;
+        max-height: 86vh;
+        object-fit: contain;
+        border: 3px solid var(--accent);
+        border-radius: 10px;
+        box-shadow: 0 24px 60px rgba(0,0,0,0.45);
+    }
+
+    .gallery-lightbox-control {
+        position: absolute;
+        top: 50%;
+        width: 46px;
+        height: 46px;
+        border: 1px solid var(--accent);
+        border-radius: 50%;
+        background: rgba(0,0,0,0.7);
+        color: #fff;
+        font-size: 28px;
+        line-height: 1;
+        cursor: pointer;
+        transform: translateY(-50%);
+    }
+
+    .gallery-lightbox-control.previous {
+        left: 18px;
+    }
+
+    .gallery-lightbox-control.next {
+        right: 18px;
+    }
+
+    .gallery-lightbox-close {
+        position: absolute;
+        top: 18px;
+        right: 22px;
+        width: 44px;
+        height: 44px;
+        border: 1px solid var(--accent);
+        border-radius: 50%;
+        background: rgba(0,0,0,0.7);
+        color: #fff;
+        font-size: 28px;
+        line-height: 1;
+        cursor: pointer;
+    }
+
+    #mobile-menu-toggle {
+        display: none;
+    }
+
+    @media (min-width: 768px) {
+        .gallery {
+            width: min(100%, 760px);
+            margin: 0 auto;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            justify-content: center;
+        }
+    }
+
+    /* Footer */
+    footer {
+        background: var(--primary);
+        color: #fff;
+        padding: 12px 18px;
+        font-size: 13px;
+        margin-top: 30px;
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        z-index: 90;
+        box-shadow: 0 -2px 10px rgba(0,0,0,0.12);
+    }
+
+    .footer-content {
+        max-width: 1000px;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+    }
+
+    .footer-message {
+        flex: 1;
+        text-align: center;
+        color: rgba(255,255,255,0.9);
+    }
+
+    .footer-copyright {
+        color: rgba(255,255,255,0.82);
+    }
+
+    .footer-social {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .footer-social a {
+        width: 30px;
+        height: 30px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid rgba(249,178,51,0.75);
+        border-radius: 50%;
+        color: #fff;
+        text-decoration: none;
+        font-weight: 800;
+        transition: transform 0.25s ease, background 0.25s ease, color 0.25s ease;
+    }
+
+    .footer-social a:hover {
+        background: var(--accent);
+        color: var(--primary);
+        transform: translateY(-2px);
+    }
+
+    @media (max-width: 1023px) {
+        .gallery-lightbox-control {
+            display: none;
+        }
+    }
+
+    @media (max-width: 767px) {
+        :root {
+            --header-offset: 0px;
+        }
+
+        body {
+            padding-top: 0;
+            padding-bottom: 0;
+        }
+
+        .gallery-lightbox-control {
+            display: none;
+        }
+
+        #mobile-menu-toggle {
+            position: fixed;
+            right: 16px;
+            bottom: 18px;
+            z-index: 200;
+            width: 48px;
+            height: 48px;
+            border: 2px solid var(--accent);
+            border-radius: 50%;
+            background: rgba(0, 0, 0, 0.9);
+            color: #fff;
+            font-size: 22px;
+            line-height: 1;
+            cursor: pointer;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        body.mobile-menu-open #mobile-menu-toggle {
+            bottom: 72px;
+        }
+
+        header {
+            position: fixed;
+            right: 12px;
+            bottom: 72px;
+            left: auto;
+            top: auto;
+            transform: none;
+            width: auto;
+            max-width: 190px;
+            border-radius: 18px;
+            transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s ease;
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+            transform: translateY(12px);
+        }
+
+        header.visible {
+            opacity: 1;
+            visibility: visible;
+            pointer-events: auto;
+            transform: translateY(0);
+        }
+
+        body.mobile-menu-open header {
+            bottom: 126px;
+        }
+
+        .nav-bar {
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+            gap: 10px;
+            padding: 12px 10px;
+        }
+
+        .brand {
+            font-size: 13px;
+            text-align: center;
+            align-self: center;
+        }
+
+        .brand span {
+            display: block;
+        }
+
+        nav ul {
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        nav a {
+            display: block;
+            padding: 8px 10px;
+            font-size: 12px;
+            text-align: center;
+        }
+
+        footer {
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            padding: 12px 10px;
+            font-size: 11px;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.25s ease, visibility 0.25s ease;
+        }
+
+        .footer-content {
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            gap: 8px;
+        }
+
+        .footer-social {
+            order: 1;
+        }
+
+        .footer-message {
+            order: 2;
+        }
+
+        .footer-copyright {
+            order: 3;
+        }
+
+        .footer-message {
+            font-size: 10px;
+        }
+
+        .footer-social a {
+            width: 28px;
+            height: 28px;
+        }
+
+        footer.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+    }
+</style>
+</head>
+
+<body>
+
+<div id="top"></div>
+
+<header>
+    <div class="nav-bar">
+        <a href="#top" class="brand">Kobus Nelson <span>UIM</span></a>
+        <nav>
+            <ul>
+                <li><a href="#intro">Intro</a></li>
+                <li><a href="#stand-for">Values</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#service">Service Support</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="#faq">FAQ</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<section class="hero fade-in">
+    <div class="hero-inner">
+        <div>
+            <h1>Lukas Albertus Jakobus “Kobus” Nelson</h1>
+            <h2>United Independent Movement (UIM) – Ward 2, Metsimaholo</h2>
+            <p>Visible, accessible and committed to practical community involvement.</p>
+            <div class="hero-badge">“First to arrive, last to leave.”</div>
+        </div>
+        <div class="hero-photo">
+            <img src="images/kobus-hero.jpg" alt="Kobus Nelson">
+        </div>
+    </div>
+</section>
+
+<div class="container">
+
+    <section id="intro" class="scroll-reveal">
+        <h2>Introduction</h2>
+        <p>Good day everyone.</p>
+        <p>My name is <strong>Kobus Nelson</strong>, and I would like to introduce myself to the community.</p>
+        <p>I have been involved in community-focused work since 2021, including service delivery follow-ups, clean-ups, safety initiatives and practical involvement in local issues.</p>
+    </section>
+
+    <section id="stand-for" class="scroll-reveal">
+        <h2>What I Stand For</h2>
+        <div class="card-grid">
+            <div class="card">
+                <h3>Communication</h3>
+                <ul>
+                    <li>Better communication with residents</li>
+                    <li>Listening and follow-up</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h3>Service Delivery</h3>
+                <ul>
+                    <li>Infrastructure attention</li>
+                    <li>Cleaner neighbourhoods</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h3>Safety</h3>
+                <ul>
+                    <li>Safer public spaces</li>
+                    <li>Community safety support</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h3>Accountability</h3>
+                <ul>
+                    <li>Transparency</li>
+                    <li>Practical involvement</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="scroll-reveal">
+        <h2>Community Projects</h2>
+        <div class="card-grid">
+            <div class="card">
+                <h3>Street Naming</h3>
+                <p>Visible community markers that improve navigation and local identity.</p>
+            </div>
+            <div class="card">
+                <h3>Clean-up Initiatives</h3>
+                <p>Support for neighbourhood clean-ups and practical environmental action.</p>
+            </div>
+            <div class="card">
+                <h3>Road Safety</h3>
+                <p>Participation in pothole awareness and local infrastructure follow-up.</p>
+            </div>
+            <div class="card">
+                <h3>Safety & Service</h3>
+                <p>Practical collaboration on municipal issues affecting daily life.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="service" class="scroll-reveal">
+        <h2>Service Delivery Support</h2>
+        <p>These are the types of service issues Kobus assists with by reporting, following up, and communicating with the relevant municipal departments.</p>
+        <div class="card-grid">
+            <div class="card">
+                <h3>Water & Sanitation</h3>
+                <p>Monitoring outages, service interruptions, and municipal follow-up.</p>
+            </div>
+            <div class="card">
+                <h3>Roads & Safety</h3>
+                <p>Assisting with potholes, lighting faults, and public safety concerns.</p>
+            </div>
+            <div class="card">
+                <h3>Waste & Cleanliness</h3>
+                <p>Tracking refuse concerns and community maintenance priorities.</p>
+            </div>
+            <div class="card">
+                <h3>Resident Communication</h3>
+                <p>Ensuring community feedback reaches the correct service channels.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="scroll-reveal">
+        <h2>Contact & Reporting</h2>
+        <div class="card-grid">
+            <div class="card">
+                <h3>Municipal Service Desk</h3>
+                <p><strong><span class="contact-icon" aria-hidden="true">&#9742;</span>016 973 8301</strong></p>
+            </div>
+            <div class="card">
+                <h3>Ward Office Email</h3>
+                <p><strong><span class="contact-icon" aria-hidden="true">&#9993;</span>Not publicly listed</strong></p>
+            </div>
+            <div class="card">
+                <h3>Emergency Services</h3>
+                <p><strong><i class="fa-solid fa-mobile-retro contact-icon" aria-hidden="true"></i>National Emergency Number (Cell): 112</strong></p>
+                <p><strong><i class="fa-solid fa-shield-halved contact-icon" aria-hidden="true"></i>SAPS: 10111</strong></p>
+                <p><strong><i class="fa-solid fa-truck-medical contact-icon" aria-hidden="true"></i>Ambulance/Fire: 10177</strong></p>
+            </div>
+        </div>
+    </section>
+
+    <section id="faq" class="scroll-reveal">
+        <h2>FAQ: Municipal Services</h2>
+        <div class="card-grid">
+            <div class="card">
+                <h3>Water & Sanitation</h3>
+                <p>Handled by municipal water services.</p>
+            </div>
+            <div class="card">
+                <h3>Potholes</h3>
+                <p>Roads & stormwater department.</p>
+            </div>
+            <div class="card">
+                <h3>Electricity Faults</h3>
+                <p>Report via municipal call centre.</p>
+            </div>
+            <div class="card">
+                <h3>Ward Councillor Role</h3>
+                <p>Follow-ups, reporting, communication.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="gallery" class="scroll-reveal">
+        <h2>Gallery</h2>
+        <div class="gallery">
+            <img src="images/uim-team.jpg" alt="UIM Team">
+            <img src="images/pothole-repair.jpg" alt="Pothole Repair">
+            <img src="images/pothole-repair2.jpg" alt="Pothole Repair">
+            <img src="images/cable-protection.jpg" alt="Cable Protection">
+            <img src="images/street-name-concrete.jpg" alt="Street Name Concrete">
+            <img src="images/canvassing.jpg" alt="canvassing">
+            <img src="images/street-name-concrete-creation.jpg" alt="Street Name Concrete Creation">
+            <img src="images/cable-protection2.jpg" alt="Cable Protection">
+        </div>
+    </section>
+
+</div>
+
+<footer>
+    <div class="footer-content">
+        <span class="footer-copyright">&copy; T Tutoring Agency Pty Ltd</span>
+        <span class="footer-message">“Not just a voice in the council chamber, but a voice for the community.”</span>
+        <div class="footer-social" aria-label="Social media links">
+            <a href="https://www.facebook.com/kobus.nelson.2025" target="_blank" rel="noopener noreferrer" aria-label="Find Kobus Nelson UIM on Facebook" title="Facebook">f</a>
+            <a href="https://www.youtube.com/results?search_query=Kobus+Nelson+UIM" target="_blank" rel="noopener noreferrer" aria-label="Find Kobus Nelson UIM on YouTube" title="YouTube">&#9654;</a>
+        </div>
+    </div>
+</footer>
+
+<div class="gallery-lightbox" id="gallery-lightbox" role="dialog" aria-modal="true" aria-label="Expanded gallery image">
+    <button class="gallery-lightbox-close" id="gallery-lightbox-close" type="button" aria-label="Close image">&times;</button>
+    <button class="gallery-lightbox-control previous" id="gallery-lightbox-previous" type="button" aria-label="Previous image">&#8249;</button>
+    <div class="gallery-lightbox-viewport" id="gallery-lightbox-viewport">
+        <div class="gallery-lightbox-track" id="gallery-lightbox-track"></div>
+    </div>
+    <button class="gallery-lightbox-control next" id="gallery-lightbox-next" type="button" aria-label="Next image">&#8250;</button>
+</div>
+
+<button id="mobile-menu-toggle" aria-label="Toggle menu" type="button">☰</button>
+
+<script>
+document.body.style.userSelect = "none";
+document.onselectstart = () => false;
+document.addEventListener("contextmenu", (event) => event.preventDefault());
+
+// document.addEventListener("keydown", (event) => {
+//     const key = event.key.toLowerCase();
+//     const blocked =
+//         (event.ctrlKey && key === "u") ||
+//         (event.ctrlKey && event.shiftKey && key === "i") ||
+//         key === "f12" ||
+//         (event.ctrlKey && key === "s");
+
+//     if (blocked) {
+//         event.preventDefault();
+//         event.stopPropagation();
+//         return false;
+//     }
+// });
+
+const mobileMedia = window.matchMedia("(max-width: 767px)");
+const header = document.querySelector("header");
+const footer = document.querySelector("footer");
+const menuToggle = document.getElementById("mobile-menu-toggle");
+let mobileHideTimer = null;
+
+function hideMobileMenu() {
+    if (!mobileMedia.matches || !header || !footer || !menuToggle) return;
+    header.classList.remove("visible");
+    footer.classList.remove("visible");
+    document.body.classList.remove("mobile-menu-open");
+    menuToggle.textContent = "☰";
+}
+
+function updateMobileNavState() {
+    if (!mobileMedia.matches) {
+        if (header) header.classList.remove("visible");
+        if (footer) footer.classList.remove("visible");
+        document.body.classList.remove("mobile-menu-open");
+        if (menuToggle) menuToggle.textContent = "☰";
+        return;
+    }
+
+    if (!header || !footer || !menuToggle) return;
+    menuToggle.textContent = header.classList.contains("visible") ? "✕" : "☰";
+}
+
+if (menuToggle) {
+    menuToggle.addEventListener("click", () => {
+        if (!mobileMedia.matches || !header || !footer) return;
+
+        const isVisible = header.classList.toggle("visible");
+        footer.classList.toggle("visible", isVisible);
+        document.body.classList.toggle("mobile-menu-open", isVisible);
+        menuToggle.textContent = isVisible ? "✕" : "☰";
+
+        if (mobileHideTimer) clearTimeout(mobileHideTimer);
+
+        if (isVisible) {
+            mobileHideTimer = setTimeout(() => {
+                hideMobileMenu();
+            }, 4000);
+        }
+    });
+}
+
+mobileMedia.addEventListener("change", () => {
+    if (!mobileMedia.matches) {
+        hideMobileMenu();
+    }
+    updateMobileNavState();
+});
+
+updateMobileNavState();
+
+const galleryLightbox = document.getElementById("gallery-lightbox");
+const galleryLightboxViewport = document.getElementById("gallery-lightbox-viewport");
+const galleryLightboxTrack = document.getElementById("gallery-lightbox-track");
+const galleryLightboxClose = document.getElementById("gallery-lightbox-close");
+const galleryLightboxPrevious = document.getElementById("gallery-lightbox-previous");
+const galleryLightboxNext = document.getElementById("gallery-lightbox-next");
+const galleryImages = Array.from(document.querySelectorAll(".gallery img"));
+let currentGalleryIndex = 0;
+let galleryTouchStartX = 0;
+
+galleryImages.forEach((image) => {
+    const slide = document.createElement("div");
+    slide.className = "gallery-lightbox-slide";
+
+    const expandedImage = document.createElement("img");
+    expandedImage.src = image.src;
+    expandedImage.alt = image.alt;
+    slide.appendChild(expandedImage);
+    galleryLightboxTrack.appendChild(slide);
+});
+
+function showGalleryImage(index) {
+    if (!galleryLightboxTrack || !galleryImages.length) return;
+    currentGalleryIndex = (index + galleryImages.length) % galleryImages.length;
+    galleryLightboxTrack.style.transform = `translateX(-${currentGalleryIndex * 100}%)`;
+}
+
+function closeGalleryLightbox() {
+    if (!galleryLightbox) return;
+    galleryLightbox.classList.remove("visible");
+    document.body.style.overflow = "";
+}
+
+galleryImages.forEach((image, index) => {
+    image.addEventListener("click", () => {
+        if (!galleryLightbox) return;
+        showGalleryImage(index);
+        galleryLightbox.classList.add("visible");
+        document.body.style.overflow = "hidden";
+    });
+});
+
+if (galleryLightboxClose) {
+    galleryLightboxClose.addEventListener("click", closeGalleryLightbox);
+}
+
+if (galleryLightbox) {
+    galleryLightbox.addEventListener("click", (event) => {
+        if (event.target === galleryLightbox) closeGalleryLightbox();
+    });
+}
+
+if (galleryLightboxPrevious) {
+    galleryLightboxPrevious.addEventListener("click", () => showGalleryImage(currentGalleryIndex - 1));
+}
+
+if (galleryLightboxNext) {
+    galleryLightboxNext.addEventListener("click", () => showGalleryImage(currentGalleryIndex + 1));
+}
+
+if (galleryLightboxViewport) {
+    galleryLightboxViewport.addEventListener("touchstart", (event) => {
+        galleryTouchStartX = event.changedTouches[0].screenX;
+    }, { passive: true });
+
+    galleryLightboxViewport.addEventListener("touchend", (event) => {
+        const distance = event.changedTouches[0].screenX - galleryTouchStartX;
+        if (Math.abs(distance) < 40) return;
+        showGalleryImage(currentGalleryIndex + (distance < 0 ? 1 : -1));
+    }, { passive: true });
+}
+
+document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") closeGalleryLightbox();
+    if (event.key === "ArrowLeft") showGalleryImage(currentGalleryIndex - 1);
+    if (event.key === "ArrowRight") showGalleryImage(currentGalleryIndex + 1);
+});
+
+document.querySelectorAll(".card").forEach((card, index) => {
+    card.style.transitionDelay = `${index * 70}ms`;
+});
+
+const heroPhoto = document.querySelector(".hero-photo img");
+
+window.addEventListener("pointermove", (event) => {
+    if (!heroPhoto || !window.matchMedia("(pointer: fine)").matches) return;
+
+    const x = (event.clientX / window.innerWidth - 0.5) * 8;
+    const y = (event.clientY / window.innerHeight - 0.5) * 8;
+    heroPhoto.style.transform = `translate(${x * 0.6}px, ${y * 0.6}px)`;
+});
+
+window.addEventListener("pointerleave", () => {
+    if (heroPhoto) heroPhoto.style.transform = "translate(0, 0)";
+});
+
+document.addEventListener("scroll", () => {
+    document.querySelectorAll(".scroll-reveal").forEach(el => {
+        const rect = el.getBoundingClientRect();
+        if (rect.top < window.innerHeight - 50) {
+            el.classList.add("visible");
+        }
+    });
+});
+</script>
+
+</body>
+</html>
